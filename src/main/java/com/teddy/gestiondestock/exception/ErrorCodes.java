@@ -1,0 +1,63 @@
+package com.teddy.gestiondestock.exception;
+
+public enum ErrorCodes {
+    // Codes d'erreur pour les tables spécifiées
+    ADRESSE_NOT_FOUND(1000),
+    ADRESSE_NOT_VALID(1001),
+    
+    ARTICLE_NOT_FOUND(2000),
+    ARTICLE_NOT_VALID(2001),
+    
+    CATEGORY_NOT_FOUND(3000),
+    CATEGORY_NOT_VALID(30001),
+    
+    CLIENT_NOT_FOUND(4000),
+    CLIENT_NOT_VALID(4001),
+    
+    COMMANDE_CLIENT_NOT_FOUND(5000),
+    COMMANDE_CLIENT_NOT_VALID(5001),
+    COMMANDE_CLIENT_NON_MODIFIABLE(5002),
+    
+    COMMANDE_FOURNISSEUR_NOT_FOUND(6000),
+    COMMANDE_FOURNISSEUR_NOT_VALID(6001),
+    
+    ENTREPRISE_NOT_FOUND(7000),
+    ENTREPRISE_NOT_VALID(7001),
+    
+    FOURNISSEUR_NOT_FOUND(8000),
+    FOURNISSEUR_NOT_VALID(8001),
+    
+    LIGNE_COMMANDE_CLIENT_NOT_FOUND(9000),
+    LIGNE_COMMANDE_CLIENT_NOT_VALID(9001),
+    
+    LIGNE_COMMANDE_FOURNISSEUR_NOT_FOUND(10000),
+    LIGNE_COMMANDE_FOURNISSEUR_NOT_VALID(10001),
+    
+    LIGNE_VENTE_NOT_FOUND(11000),
+    LIGNE_VENTE_NOT_VALID(11001),
+    
+    MVT_STK_NOT_FOUND(12000),
+    MVT_STK_NOT_VALID(12001),
+    
+    ROLES_NOT_FOUND(13000),
+    ROLES_NOT_VALID(13001),
+    
+    UTILISATEUR_NOT_FOUND(14000),
+    UTILISATEUR_NOT_VALID(14001),
+    
+    VENTES_NOT_FOUND(15000),
+    VENTES_NOT_VALID(15001),
+    
+    ROLE_NOT_FOUND(16000),
+    ROLE_NOT_VALID(16001);  // Optionnel : si tu en as besoin
+
+    private final int code;
+
+    ErrorCodes(int code) {
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
+}
