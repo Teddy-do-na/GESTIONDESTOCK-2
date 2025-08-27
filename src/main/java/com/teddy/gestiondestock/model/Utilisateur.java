@@ -1,6 +1,7 @@
 package com.teddy.gestiondestock.model;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -28,7 +29,7 @@ public class Utilisateur extends AbstractEntity {
     private String email;
 
     @Column(name = "datedenaissance")
-    private Instant dateDeNaissance;
+    private LocalDate dateDeNaissance; 
 
     @Column(name = "motdepasse")
     private String motDePasse;

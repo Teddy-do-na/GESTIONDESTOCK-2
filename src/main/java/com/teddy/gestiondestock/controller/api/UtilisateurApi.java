@@ -44,8 +44,16 @@ public class UtilisateurApi {
     @Operation(summary = "Créer ou mettre à jour un utilisateur")
     @ApiResponse(responseCode = "200", description = "Utilisateur sauvegardé", content = @Content(schema = @Schema(implementation = UtilisateurDto.class)))
     public ResponseEntity<UtilisateurDto> save(@RequestBody @Parameter(description = "Données de l'utilisateur", required = true) UtilisateurDto dto) {
-        UtilisateurDto savedDto = utilisateurService.save(dto);
-        return ResponseEntity.ok(savedDto);
+        System.out.println(dto);
+        try{
+            UtilisateurDto savedDto = utilisateurService.save(dto);
+            
+            return ResponseEntity.ok(savedDto);
+        } catch (Exception e) {
+            e.printStackTrace(); // log details
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/{id}")

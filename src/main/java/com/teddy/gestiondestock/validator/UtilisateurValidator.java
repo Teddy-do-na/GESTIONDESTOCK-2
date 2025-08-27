@@ -40,7 +40,7 @@ public class UtilisateurValidator {
         if (utilisateurDto.getDateDeNaissance() == null) {
             errors.add("Veuillez renseigner la date de naissance de l'utilisateur");
         } else {
-            LocalDate dateNaissance = utilisateurDto.getDateDeNaissance().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate dateNaissance = utilisateurDto.getDateDeNaissance();
             LocalDate now = LocalDate.now();
             if (dateNaissance.isAfter(now.minusYears(18))) {
                 errors.add("L'utilisateur doit être majeur");

@@ -1,7 +1,9 @@
 package com.teddy.gestiondestock.dto;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.teddy.gestiondestock.model.Utilisateur;
 
 import lombok.Builder;
@@ -10,14 +12,16 @@ import lombok.Data;
 @Data
 @Builder
 public class UtilisateurDto {
+   
     private Integer id;
     private String nom;
     private String prenom;
     private String email;
-    private Instant dateDeNaissance;
+    private LocalDate dateDeNaissance;
     private String motDePasse;
     private AdresseDto adresse;
     private String photo;
+    
 
     public static UtilisateurDto fromEntity(Utilisateur utilisateur) {
         if (utilisateur == null) {
