@@ -1,5 +1,7 @@
 package com.teddy.gestiondestock.config;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,7 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -21,6 +22,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) // Désactive CSRF pour les API
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers("/api/**").permitAll() // Autorise l'accès aux API sans authentification
+                .requestMatchers("/gestiondestock/v1/**").permitAll() // Autorise l'accès aux API sans authentification
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Autorise Swagger
                 .anyRequest().authenticated()
             );

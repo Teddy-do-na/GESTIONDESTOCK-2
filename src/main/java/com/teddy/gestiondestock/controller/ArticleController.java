@@ -6,6 +6,8 @@ import com.teddy.gestiondestock.dto.ArticleDto;
 import com.teddy.gestiondestock.services.ArticleService; // ← Interface, pas impl
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -13,6 +15,10 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/api/articles")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"}, 
+             allowedHeaders = "*", 
+             allowCredentials = "true")
 public class ArticleController implements ArticleApi {
 
     private final ArticleService articleService;

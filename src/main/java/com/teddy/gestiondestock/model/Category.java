@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Category")
 public class Category extends AbstractEntity {
+    
     @Column(name = "code")
     private String code;
 

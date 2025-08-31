@@ -1,9 +1,11 @@
 package com.teddy.gestiondestock.dto;
 
+import java.math.BigDecimal;
+
 import com.teddy.gestiondestock.model.Article;
+
 import lombok.Builder;
 import lombok.Data;
-import java.math.BigDecimal;
 
 @Data
 @Builder

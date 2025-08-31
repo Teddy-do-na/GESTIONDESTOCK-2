@@ -1,7 +1,7 @@
 package com.teddy.gestiondestock.controller.api;
 
 import com.teddy.gestiondestock.dto.ArticleDto;
-import com.teddy.gestiondestock.Utils.Constants;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Tag(name = "Article", description = "API gestion des articles")
-@RequestMapping(Constants.APP_ROOT + "/articles")
 public interface ArticleApi {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -87,10 +86,10 @@ public interface ArticleApi {
         @PathVariable("code") String code
     );
 
-    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+   @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(
         summary = "Renvoyer la liste des articles",
-        description = "Cette méthode permet de rechercher et de renvoyer la liste des articles qui existent dans la BDD",
+        description = "Cette méthode permet de renvoyer la liste de toutes les articles existantes",
         responses = {
             @ApiResponse(
                 responseCode = "200",

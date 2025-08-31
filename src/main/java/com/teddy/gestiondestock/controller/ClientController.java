@@ -1,14 +1,21 @@
 package com.teddy.gestiondestock.controller;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.teddy.gestiondestock.controller.api.ClientApi;
 import com.teddy.gestiondestock.dto.ClientDto;
 import com.teddy.gestiondestock.services.ClientService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
+@RequestMapping("/api/clients")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"}, 
+             allowedHeaders = "*", 
+             allowCredentials = "true")
 public class ClientController implements ClientApi {
 
     private final ClientService clientService;

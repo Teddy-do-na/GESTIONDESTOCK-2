@@ -1,10 +1,12 @@
 package com.teddy.gestiondestock.dto;
 
-import com.teddy.gestiondestock.model.Category;
-import lombok.Builder;
-import lombok.Data;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.teddy.gestiondestock.model.Category;
+
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder
@@ -14,6 +16,7 @@ public class CategoryDto {
     private String designation;
     private List<ArticleDto> articles;
 
+    // ⚡ Mapper uniquement les champs simples (évite LazyInitializationException)
     public static CategoryDto fromEntity(Category category) {
         if (category == null) {
             return null;
@@ -22,10 +25,23 @@ public class CategoryDto {
                 .id(category.getId())
                 .code(category.getCode())
                 .designation(category.getDesignation())
-                .articles(category.getArticles() != null ? 
-                    category.getArticles().stream()
-                        .map(ArticleDto::fromEntity)
-                        .collect(Collectors.toList()) : null)
+                .build();
+    }
+
+    // ⚡ Variante si tu veux charger aussi les articles
+    public static CategoryDto fromEntityWithArticles(Category category) {
+        if (category == null) {
+            return null;
+        }
+        return CategoryDto.builder()
+                .id(category.getId())
+                .code(category.getCode())
+                .designation(category.getDesignation())
+                .articles(category.getArticles() != null ?
+                        category.getArticles().stream()
+                                .map(ArticleDto::fromEntity)
+                                .collect(Collectors.toList())
+                        : null)
                 .build();
     }
 
@@ -37,10 +53,11 @@ public class CategoryDto {
         category.setId(dto.getId());
         category.setCode(dto.getCode());
         category.setDesignation(dto.getDesignation());
+
         if (dto.getArticles() != null) {
             category.setArticles(dto.getArticles().stream()
-                .map(ArticleDto::toEntity)
-                .collect(Collectors.toList()));
+                    .map(ArticleDto::toEntity)
+                    .collect(Collectors.toList()));
         }
         return category;
     }

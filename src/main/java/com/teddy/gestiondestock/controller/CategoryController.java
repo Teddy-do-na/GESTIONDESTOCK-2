@@ -1,15 +1,22 @@
 package com.teddy.gestiondestock.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.teddy.gestiondestock.controller.api.CategoryApi;
 import com.teddy.gestiondestock.dto.CategoryDto;
 import com.teddy.gestiondestock.services.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
+@RequestMapping("/api/categories")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"}, 
+             allowedHeaders = "*", 
+             allowCredentials = "true")
 public class CategoryController implements CategoryApi {
 
     private final CategoryService categoryService;
